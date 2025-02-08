@@ -10,6 +10,8 @@ import com.springboot.Sprinboot.Model.RhetoricRumble;
 import com.springboot.Sprinboot.Model.RuntimeTerror;
 import org.springframework.web.bind.annotation.*;
 
+//updated controller
+
 @CrossOrigin(origins = "*")
 @RestController
 public class Controller {
