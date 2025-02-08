@@ -1,4 +1,5 @@
-package com.springboot.Sprinboot;
+package com.springboot.Sprinboot.Model;
+
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,14 +10,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Model {
+public class CerebraQuest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "event_name", nullable = false)
-    private String eventName;
+
 
     @Column(name = "participant_name", nullable = false)
     private String participantName;
@@ -33,3 +33,4 @@ public class Model {
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 }
+
