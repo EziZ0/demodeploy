@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BusinessMastery {
-
+//updated repo
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
