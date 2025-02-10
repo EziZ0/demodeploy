@@ -27,6 +27,9 @@ public class CerebraQuest {
     @Column(name = "college", nullable = false)
     private String college;
 
+
+    //null
+
     @Column(name = "email" ,nullable = false)
     private String email;
 
