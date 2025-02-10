@@ -29,7 +29,7 @@ public class CerebraQuest {
 
 
     //null
-
+//null
     @Column(name = "email" ,nullable = false)
     private String email;
 
