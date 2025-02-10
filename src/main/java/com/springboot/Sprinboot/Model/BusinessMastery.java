@@ -25,6 +25,9 @@ public class BusinessMastery {
     @Column(name = "college", nullable = false)
     private String college;
 
+    @Column(name = "email" ,nullable = false)
+    private String email;
+
     @Column(name = "participants_count", nullable = false)
     private int participantsCount;
 
