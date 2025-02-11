@@ -1,13 +1,8 @@
 package com.springboot.Sprinboot;
 
-import com.springboot.Sprinboot.Model.BusinessMastery;
-import com.springboot.Sprinboot.Model.CerebraQuest;
-import com.springboot.Sprinboot.Model.Innovatrix;
-import com.springboot.Sprinboot.Model.PictionaryPros;
-import com.springboot.Sprinboot.Model.PixelPerfects;
-import com.springboot.Sprinboot.Model.ProjectExpo;
-import com.springboot.Sprinboot.Model.RhetoricRumble;
-import com.springboot.Sprinboot.Model.RuntimeTerror;
+import com.springboot.Sprinboot.Model.*;
+import com.springboot.Sprinboot.Repo.FinalRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 //updated controller
@@ -36,6 +31,9 @@ public class Controller {
         this.runtimeTerror = runtimeTerror;
     }
 
+    @Autowired
+    private FinalRepo finalRepo;
+
 
     @GetMapping("/")
     public String succes(){
@@ -45,18 +43,36 @@ public class Controller {
     //Event 1
     @PostMapping("/paper")
     public Innovatrix paper(@RequestBody Innovatrix model){
+        Final f1 = new Final();
+        f1.setParticipantName(model.getParticipantName());
+        f1.setCollege(model.getCollege());
+        f1.setYear(model.getYear());
+        f1.setEvent_name("Innovatrix");
+        finalRepo.save(f1);
         return innovatrix.save(model);
     }
 
     //Event 2
     @PostMapping("/coding")
     public RuntimeTerror code(@RequestBody RuntimeTerror model){
+        Final f1 = new Final();
+        f1.setParticipantName(model.getParticipantName());
+        f1.setCollege(model.getCollege());
+        f1.setYear(model.getYear());
+        f1.setEvent_name("Runtime Terror");
+        finalRepo.save(f1);
         return runtimeTerror.save(model);
     }
 
     //Event 3
     @PostMapping("/uiux")
     public PixelPerfects uiux(@RequestBody PixelPerfects model) {
+        Final f1 = new Final();
+        f1.setParticipantName(model.getParticipantName());
+        f1.setCollege(model.getCollege());
+        f1.setYear(model.getYear());
+        f1.setEvent_name("Pixel Perfects");
+        finalRepo.save(f1);
         return pixelPerfects.save(model);
     }
 
@@ -64,24 +80,48 @@ public class Controller {
     //Event 4
     @PostMapping("/business")
     public BusinessMastery business(@RequestBody BusinessMastery model){
+        Final f1 = new Final();
+        f1.setParticipantName(model.getParticipantName());
+        f1.setCollege(model.getCollege());
+        f1.setYear(model.getYear());
+        f1.setEvent_name("Business Mastery");
+        finalRepo.save(f1);
         return businessMastery.save(model);
     }
 
     //Event 5
     @PostMapping("/quiz")
     public CerebraQuest quiz(@RequestBody CerebraQuest model){
+        Final f1 = new Final();
+        f1.setParticipantName(model.getParticipantName());
+        f1.setCollege(model.getCollege());
+        f1.setYear(model.getYear());
+        f1.setEvent_name("Cerebra Quest");
+        finalRepo.save(f1);
         return cerebraQuest.save(model);
     }
 
     //Event 6
     @PostMapping("/surprise")
     public PictionaryPros surprise(@RequestBody PictionaryPros model){
+        Final f1 = new Final();
+        f1.setParticipantName(model.getParticipantName());
+        f1.setCollege(model.getCollege());
+        f1.setYear(model.getYear());
+        f1.setEvent_name("Surprise Event");
+        finalRepo.save(f1);
         return pictionaryPros.save(model);
     }
 
     //Event 7
     @PostMapping("/debate")
     public RhetoricRumble find(@RequestBody RhetoricRumble model){
+        Final f1 = new Final();
+        f1.setParticipantName(model.getParticipantName());
+        f1.setCollege(model.getCollege());
+        f1.setYear(model.getYear());
+        f1.setEvent_name("Rhetoric Rumble");
+        finalRepo.save(f1);
         return rhetoricRumble.save(model);
     }
 
