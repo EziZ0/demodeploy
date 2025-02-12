@@ -5,6 +5,8 @@ import com.springboot.Sprinboot.Repo.FinalRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 //updated controller
 
 @CrossOrigin(origins = "*")
@@ -78,6 +80,13 @@ public class Controller {
 
 
     //Event 4
+
+
+    @GetMapping("/getBusiness")
+    public List<BusinessMastery> businessMastery(){
+        return businessMastery.findAll();
+    }
+
     @PostMapping("/business")
     public BusinessMastery business(@RequestBody BusinessMastery model){
         Final f1 = new Final();
