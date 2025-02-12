@@ -49,6 +49,11 @@ public class Controller {
         return innovatrix.findAll();
     }
 
+    @GetMapping("/final")
+    public List<Final> finals(){
+        return finalRepo.findAll();
+    }
+
     @PostMapping("/paper")
     public Innovatrix paper(@RequestBody Innovatrix model){
         Final f1 = new Final();
