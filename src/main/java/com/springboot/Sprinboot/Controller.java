@@ -43,6 +43,12 @@ public class Controller {
     }
 
     //Event 1
+
+    @GetMapping("/getPaper")
+    public List<Innovatrix> innovatrixes(){
+        return innovatrix.findAll();
+    }
+
     @PostMapping("/paper")
     public Innovatrix paper(@RequestBody Innovatrix model){
         Final f1 = new Final();
@@ -54,7 +60,15 @@ public class Controller {
         return innovatrix.save(model);
     }
 
+
+
     //Event 2
+
+    @GetMapping("/getCoding")
+    public List<RuntimeTerror> code(){
+        return runtimeTerror.findAll();
+    }
+
     @PostMapping("/coding")
     public RuntimeTerror code(@RequestBody RuntimeTerror model){
         Final f1 = new Final();
@@ -67,6 +81,12 @@ public class Controller {
     }
 
     //Event 3
+
+    @GetMapping("/getUiux")
+    public List<com.springboot.Sprinboot.Model.PixelPerfects> pixelPerfects(){
+        return pixelPerfects.findAll();
+    }
+
     @PostMapping("/uiux")
     public PixelPerfects uiux(@RequestBody PixelPerfects model) {
         Final f1 = new Final();
@@ -99,6 +119,12 @@ public class Controller {
     }
 
     //Event 5
+
+    @GetMapping("/getQuiz")
+    public List<CerebraQuest> cerebraQuest(){
+        return cerebraQuest.findAll();
+    }
+
     @PostMapping("/quiz")
     public CerebraQuest quiz(@RequestBody CerebraQuest model){
         Final f1 = new Final();
@@ -111,6 +137,12 @@ public class Controller {
     }
 
     //Event 6
+
+    @GetMapping("/getSurprise")
+    public List<PictionaryPros> pictionaryPros(){
+        return pictionaryPros.findAll();
+    }
+
     @PostMapping("/surprise")
     public PictionaryPros surprise(@RequestBody PictionaryPros model){
         Final f1 = new Final();
@@ -123,6 +155,12 @@ public class Controller {
     }
 
     //Event 7
+
+    @GetMapping("/getDebate")
+    public List<RhetoricRumble> rhetoricRumbles(){
+        return rhetoricRumble.findAll();
+    }
+
     @PostMapping("/debate")
     public RhetoricRumble find(@RequestBody RhetoricRumble model){
         Final f1 = new Final();
