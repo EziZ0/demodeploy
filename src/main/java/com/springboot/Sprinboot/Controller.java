@@ -63,7 +63,6 @@ public class Controller {
         f1.setYear(model.getYear());
         f1.setEvent_name("Innovatrix");
         finalRepo.save(f1);
-        model.setId(innovatrix.count()+1);
         return innovatrix.save(model);
     }
 
@@ -84,7 +83,6 @@ public class Controller {
         f1.setYear(model.getYear());
         f1.setEvent_name("Runtime Terror");
         finalRepo.save(f1);
-        model.setId(runtimeTerror.count()+1);
         return runtimeTerror.save(model);
     }
 
@@ -104,7 +102,6 @@ public class Controller {
         f1.setYear(model.getYear());
         f1.setEvent_name("Pixel Perfects");
         finalRepo.save(f1);
-        model.setId(pixelPerfects.count()+1);
         return pixelPerfects.save(model);
     }
 
@@ -125,7 +122,6 @@ public class Controller {
         f1.setYear(model.getYear());
         f1.setEvent_name("Business Mastery");
         finalRepo.save(f1);
-        model.setId(businessMastery.count()+1);
         return businessMastery.save(model);
     }
 
@@ -144,7 +140,6 @@ public class Controller {
         f1.setYear(model.getYear());
         f1.setEvent_name("Cerebra Quest");
         finalRepo.save(f1);
-        model.setId(cerebraQuest.count()+1);
         return cerebraQuest.save(model);
     }
 
@@ -163,7 +158,6 @@ public class Controller {
         f1.setYear(model.getYear());
         f1.setEvent_name("Surprise Event");
         finalRepo.save(f1);
-        model.setId(pictionaryPros.count()+1);
         return pictionaryPros.save(model);
     }
 
@@ -182,7 +176,6 @@ public class Controller {
         f1.setYear(model.getYear());
         f1.setEvent_name("Rhetoric Rumble");
         finalRepo.save(f1);
-        model.setId(rhetoricRumble.count()+1);
         return rhetoricRumble.save(model);
     }
 
@@ -196,7 +189,6 @@ public class Controller {
         f1.setYear(model.getYear());
         f1.setEvent_name("Prototype Parade");
         finalRepo.save(f1);
-        model.setId(rhetoricRumble.count()+1);
         return projectExpo.save(model);
     }
 

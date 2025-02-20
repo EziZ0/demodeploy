@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class ProjectExpo {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
 

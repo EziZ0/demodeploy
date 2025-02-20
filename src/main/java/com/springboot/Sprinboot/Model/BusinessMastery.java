@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BusinessMastery {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
 

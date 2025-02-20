@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class Innovatrix {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
 

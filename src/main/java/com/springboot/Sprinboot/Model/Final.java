@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class Final {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
 
