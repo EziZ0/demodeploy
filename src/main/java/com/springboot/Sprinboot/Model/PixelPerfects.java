@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class PixelPerfects {
 //updated Pixel perfect
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 

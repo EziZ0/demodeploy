@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 public class PictionaryPros {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 

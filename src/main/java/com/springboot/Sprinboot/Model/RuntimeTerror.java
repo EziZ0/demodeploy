@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 public class RuntimeTerror {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 

@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class RhetoricRumble {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
