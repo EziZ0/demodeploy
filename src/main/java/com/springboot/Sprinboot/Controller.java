@@ -2,10 +2,16 @@ package com.springboot.Sprinboot;
 
 import com.springboot.Sprinboot.Model.*;
 import com.springboot.Sprinboot.Repo.FinalRepo;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
 
 //updated controller
 //final
@@ -23,19 +29,28 @@ public class Controller {
     private final com.springboot.Sprinboot.Repo.RhetoricRumble rhetoricRumble;
     private final com.springboot.Sprinboot.Repo.RuntimeTerror runtimeTerror;
 
-    public Controller(com.springboot.Sprinboot.Repo.BusinessMastery businessMastery, com.springboot.Sprinboot.Repo.CerebraQuest cerebraQuest, com.springboot.Sprinboot.Repo.PictionaryPros pictionaryPros, com.springboot.Sprinboot.Repo.Innovatrix innovatrix, com.springboot.Sprinboot.Repo.PixelPerfects pixelPerfects, com.springboot.Sprinboot.Repo.ProjectExpo projectExpo, com.springboot.Sprinboot.Repo.RhetoricRumble rhetoricRumble, com.springboot.Sprinboot.Repo.RuntimeTerror runtimeTerror) {
+    // rate limiter
+
+    private final RateLimitService rateLimiterService ;
+    private final Map<String, Integer> captchaStore = new ConcurrentHashMap<>();
+    private final Random random = new Random();
+
+
+
+    @Autowired
+    private FinalRepo finalRepo;
+
+    public Controller(com.springboot.Sprinboot.Repo.BusinessMastery businessMastery, com.springboot.Sprinboot.Repo.CerebraQuest cerebraQuest, com.springboot.Sprinboot.Repo.Innovatrix innovatrix, com.springboot.Sprinboot.Repo.PictionaryPros pictionaryPros, com.springboot.Sprinboot.Repo.PixelPerfects pixelPerfects, com.springboot.Sprinboot.Repo.ProjectExpo projectExpo, com.springboot.Sprinboot.Repo.RhetoricRumble rhetoricRumble, com.springboot.Sprinboot.Repo.RuntimeTerror runtimeTerror, RateLimitService rateLimiterService) {
         this.businessMastery = businessMastery;
         this.cerebraQuest = cerebraQuest;
-        this.pictionaryPros = pictionaryPros;
         this.innovatrix = innovatrix;
+        this.pictionaryPros = pictionaryPros;
         this.pixelPerfects = pixelPerfects;
         this.projectExpo = projectExpo;
         this.rhetoricRumble = rhetoricRumble;
         this.runtimeTerror = runtimeTerror;
+        this.rateLimiterService = rateLimiterService;
     }
-
-    @Autowired
-    private FinalRepo finalRepo;
 
 
     @GetMapping("/")
@@ -89,7 +104,7 @@ public class Controller {
     //Event 3
 
     @GetMapping("/getUiux")
-    public List<com.springboot.Sprinboot.Model.PixelPerfects> pixelPerfects(){
+    public List<PixelPerfects> pixelPerfects(){
         return pixelPerfects.findAll();
     }
 
@@ -191,6 +206,57 @@ public class Controller {
         f1.setEvent_name("Prototype Parade");
         finalRepo.save(f1);
         return projectExpo.save(model);
+    }
+
+
+
+
+
+    @GetMapping("/request")
+    public ResponseEntity<String> checkRequest(HttpServletRequest request) {
+        String ip = request.getRemoteAddr();
+
+        if (!rateLimiterService.isRequestAllowed(ip)) {
+            System.out.println("Rate limit exceeded for IP: " + ip);
+            return ResponseEntity.status(429).body("Too Many Requests"); // Ensure correct 429 response
+        }
+
+        System.out.println("Request allowed for IP: " + ip);
+        return ResponseEntity.ok("Request allowed");
+    }
+
+    // API to Generate CAPTCHA Question
+    @GetMapping("/captcha")
+    public ResponseEntity<Map<String, String>> getCaptcha(HttpServletRequest request) {
+        int num1 = random.nextInt(10) + 1;
+        int num2 = random.nextInt(10) + 1;
+        int answer = num1 * num2;
+
+        String clientIp = request.getRemoteAddr();
+        captchaStore.put(clientIp, answer); // Store CAPTCHA answer for IP
+
+        Map<String, String> response = new HashMap<>();
+        response.put("question", "What is " + num1 + " * " + num2 + "?");
+
+        System.out.println("Generated CAPTCHA for IP " + clientIp + ": " + num1 + " * " + num2 + " = " + answer);
+        return ResponseEntity.ok(response);
+    }
+
+    // API to Verify CAPTCHA Answer
+    @PostMapping("/captcha")
+    public ResponseEntity<String> verifyCaptcha(@RequestParam String answer, HttpServletRequest request) {
+        String clientIp = request.getRemoteAddr();
+        int correctAnswer = captchaStore.getOrDefault(clientIp, -1);
+
+        if (Integer.toString(correctAnswer).equals(answer)) {
+            rateLimiterService.resetLimit(clientIp); // Reset rate limit
+            captchaStore.remove(clientIp); // Remove CAPTCHA record
+            System.out.println("CAPTCHA passed for IP: " + clientIp);
+            return ResponseEntity.ok("CAPTCHA Passed");
+        }
+
+        System.out.println("CAPTCHA failed for IP: " + clientIp);
+        return ResponseEntity.badRequest().body("Wrong CAPTCHA");
     }
 
 
