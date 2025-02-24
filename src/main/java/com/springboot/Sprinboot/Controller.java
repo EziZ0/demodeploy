@@ -203,6 +203,11 @@ public class Controller {
     }
 
     //Event 8
+
+    @GetMapping("/getProject")
+    public List<ProjectExpo> project(){
+        return projectExpo.findAll();
+    }
     //final
     @PostMapping("/project")
     public ProjectExpo project(@RequestBody ProjectExpo model) throws MessagingException {
