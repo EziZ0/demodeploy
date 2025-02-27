@@ -23,15 +23,16 @@ public class EmailService {
         helper.setReplyTo("dextero2025@gmail.com");
 
         String emailContent = "<div style='font-family: Arial, sans-serif; padding: 15px; border: 1px solid #ddd; border-radius: 10px;'>"
-                + "<h2 style='color: #4CAF50;'>🎉 Excited to See You at the Event!</h2>"
-                + "<p>Dear <strong>" + name + "</strong>,</p>"
-                + "<p>Thank you for registering! We can't wait to see you at the event.</p> <br><br>"
-                + "<h3>📍 Venue: CSBS BLOCK, RMDEC</h3>"
-                + "<h3>🕒 Time: 9.00 A.M</h3>"
-                + "<p>Get ready for an exciting experience! If you have any questions, feel free to reach out.</p>"
-                + "<p>See you soon! 👋</p>"
-                + "<p><strong>Best Regards,</strong><br>Dextero'25</p>"
-                + "</div>";
+        + "<h2 style='color: #4CAF50;'>🎉 Excited to See You at the Event!</h2>"
+        + "<p>Dear <strong>" + name + "</strong>,</p>"
+        + "<p>Thank you for registering! We can't wait to see you at the event.</p> <br><br>"
+        + "<h3>📅 Date: 17th March 2025</h3>"
+        + "<h3>📍 Venue: CSBS BLOCK, RMDEC</h3>"
+        + "<h3>🕒 Time: 9.00 A.M</h3>"
+        + "<p>Get ready for an exciting experience! If you have any questions, feel free to reach out.</p>"
+        + "<p>See you soon! 👋</p>"
+        + "<p><strong>Best Regards,</strong><br>Dextero'25</p>"
+        + "</div>";
 
         helper.setText(emailContent, true); // Enable HTML formatting
 
