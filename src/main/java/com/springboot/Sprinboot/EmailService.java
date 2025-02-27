@@ -30,6 +30,7 @@ public class EmailService {
         + "<h3>📍 Venue: CSBS BLOCK, RMDEC</h3>"
         + "<h3>🕒 Time: 9.00 A.M</h3>"
         + "<p>Get ready for an exciting experience! If you have any questions, feel free to reach out.</p>"
+        + "<p>🚍 <strong>Bus Routes:</strong> <a href='https://dextero25.vercel.app/bus.html' target='_blank'>Click here for details</a></p>"
         + "<p>See you soon! 👋</p>"
         + "<p><strong>Best Regards,</strong><br>Dextero'25</p>"
         + "</div>";
